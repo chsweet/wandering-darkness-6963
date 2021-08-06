@@ -2,10 +2,10 @@
 <br>
 <% @plots.each do |plot| %>
   <section id="plot-<%= plot.id %>">
-    <li>Plot Number: <%= plot.number %></li>
+    <p>Plot Number: <%= plot.number %></p>
     <% plot.plants.each do |plant| %>
       <section id="plant-<%= plant.id %>">
-        <%= plant.name %>
+        <li><%= plant.name %> <%= link_to "Remove", "/plots/#{plot.id}/plants/#{plant.id}" %></li>
       </section>
     <% end %>
   </section>
