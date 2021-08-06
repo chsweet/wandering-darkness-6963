@@ -1,6 +1,9 @@
 class PlotPlantsController < ApplicationController
   def destory
-    plot_plant = PlotPlant.find(plot: params[:plot_id], plant: params[:plant_id])
+    plot = Plot.find(params[:plot_id])
+    plant = Plant.find(params[:plant_id])
+
+    plot_plant = PlotPlant.where(plot_id: plot.id, plant_id: plant.id)
 
     plot_plant.destory
 
