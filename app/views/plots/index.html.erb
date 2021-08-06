@@ -4,7 +4,9 @@
   <section id="plot-<%= plot.id %>">
     <li>Plot Number: <%= plot.number %></li>
     <% plot.plants.each do |plant| %>
-      <%= plant.name %>
+      <section id="plant-<%= plant.id %>">
+        <%= plant.name %>
+      </section>
     <% end %>
   </section>
 <% end %>

@@ -50,11 +50,22 @@ RSpec.describe 'plot index page' do
       expect(page).to have_content(@plant_3.name)
       expect(page).to_not have_content(@plant_5.name)
     end
- 
+
     within("#plot-#{@plot_5.id}") do
       expect(page).to_not have_content(@plant_4.name)
       expect(page).to_not have_content(@plant_5.name)
     end
+  end
 
+  it 'dislpay a link to remove plant from plot and returns back to index page' do
+    within("#plot-#{@plot_4.id}") do
+      within("#plant-#{@plant_2.id}") do
+        click_link 'Remove'
+
+        expect(current_path).to eq(plots_path)
+
+        expect(page).to_not have_content(@plant_2.name)
+      end
+    end
   end
 end
