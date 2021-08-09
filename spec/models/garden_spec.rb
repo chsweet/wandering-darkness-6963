@@ -33,7 +33,13 @@ RSpec.describe Garden do
     end
     describe '#plants_below_100_day_harvest' do
       it 'returns all garden plants that hat take less than 100 days to harvest' do
-        expect(@garden.plants_below_100_day_harvest.first.name).to eq(@plant_1.name)
+        expected_return = @garden.plants_below_100_day_harvest
+
+        actual = @garden.plants_below_100_day_harvest.map do |plant|
+          plant.plant_name
+        end
+
+        expect(actual).to_not include(@plant_3.name)
       end
     end
   end
